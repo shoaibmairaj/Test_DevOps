@@ -51,27 +51,7 @@ sudo apt-get update
 sudo apt install curl apt-transport-https vim git wget gnupg2 \
 software-properties-common apt-transport-https ca-certificates uidmap -y
 
-# Download Google Public Key
-sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
-
-# Add K8s Repo
-echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
-
-sudo apt-get update
-apt-install containerd -y
-# Install K8s components
-sudo apt-get install -y kubelet=1.22.1-00 kubeadm=1.22.1-00 kubectl=1.22.1-00
-
-# Hold K8s components
-sudo apt-mark hold kubelet kubeadm kubectl
-user1@cpnode:~$ less k8s_ubuntu_setup.sh 
-
-
-sudo apt-get update
-
-# Install imp certificates
-sudo apt install curl apt-transport-https vim git wget gnupg2 \
-software-properties-common apt-transport-https ca-certificates uidmap -y
+sudo swapoff -a
 
 # Download Google Public Key
 sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
