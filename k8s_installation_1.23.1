@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# install imp certificates
+sudo apt install curl apt-transport-https vim git wget gnupg2 \
+software-properties-common ca-certificates uidmap -y
+
+# Install containerd
+apt install containerd -y
+
+# Download google public key
+sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+
+# Add K8s repository
+echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+# Install kubeadm kubelet kubectl
+sudo apt-get update
+sudo apt-get install -y kubeadm=1.23.1-00 kubelet=1.23.1-00 kubectl=1.23.1-0
+sudo apt-mark hold kubelet kubeadm kubectl
+
+# become non-root user & create a directory
+exit
+mkdir -p $HOME/.kube
