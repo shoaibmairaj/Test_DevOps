@@ -15,7 +15,7 @@ echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https:/
 
 # Install kubeadm kubelet kubectl
 sudo apt-get update
-sudo apt-get install -y kubeadm=1.23.1-00 kubelet=1.23.1-00 kubectl=1.23.1-0
+sudo apt-get install -y kubeadm=1.23.1-00 kubelet=1.23.1-00 kubectl=1.23.1-00
 sudo apt-mark hold kubelet kubeadm kubectl
 
 # become non-root user & create a directory
